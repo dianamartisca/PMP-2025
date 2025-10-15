@@ -3,3 +3,4 @@ arviz
 matplotlib
 numpy
 jupyter
+pgmpy
