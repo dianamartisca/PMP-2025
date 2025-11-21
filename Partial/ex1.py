@@ -18,7 +18,7 @@ model = DiscreteBayesianNetwork([
 print("Independencies in the Bayesian Network:")
 print(model.get_independencies())
 
-'''plt.figure(figsize=(10, 8))
+plt.figure(figsize=(10, 8))
 pos = nx.spring_layout(model, seed=42)  
 nx.draw(model, pos, with_labels=True, node_size=3000, node_color="lightblue", 
         font_size=12, font_weight="bold", arrows=True, arrowsize=20, 
@@ -26,7 +26,7 @@ nx.draw(model, pos, with_labels=True, node_size=3000, node_color="lightblue",
 plt.title("Bayesian Network", fontsize=16)
 plt.axis('off')
 plt.tight_layout()
-plt.show()'''
+plt.show()
 
 #b
 cpd_o = TabularCPD(variable='O', variable_card=2, values=[[0.3], [0.7]])
