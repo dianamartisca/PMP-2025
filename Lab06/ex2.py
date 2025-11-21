@@ -1,16 +1,15 @@
 """
 Lab 6, Exercise 2: Bayesian Inference for Call Center Rate
 
-Problem: Estimate average call rate λ using Poisson-Gamma conjugate prior.
+Problem: Estimate average call rate lambda using Poisson-Gamma conjugate prior.
 - Observed: 180 calls over 10 hours
-- Likelihood: Poisson(λ) for number of calls per hour
-- Prior: Gamma(α, β) - conjugate prior for Poisson
-- Posterior: Gamma(α_post, β_post) - computed analytically
-
+- Likelihood: Poisson(lambda) for number of calls per hour
+- Prior: Gamma(alpha, beta) - conjugate prior for Poisson
+- Posterior: Gamma(alpha_post, beta_post) - computed analytically
 Tasks:
-a) Determine the posterior distribution of λ
+a) Determine the posterior distribution of lambda
 b) Calculate 94% HDI (Highest Density Interval)
-c) Find the most probable value (mode) of λ
+c) Find the most probable value (mode) of lambda
 """
 
 import numpy as np
@@ -33,11 +32,11 @@ print(f"Total hours: {total_hours}")
 print(f"Observed average rate: {observed_rate} calls/hour\n")
 
 # ============================================================================
-# Prior Distribution: Gamma(α, β)
+# Prior Distribution: Gamma(alpha, beta)
 # ============================================================================
 # We use a weakly informative prior: Gamma(1, 1)
-# - Mean = α/β = 1/1 = 1
-# - Variance = α/β² = 1/1 = 1
+# - Mean = alpha/beta = 1/1 = 1
+# - Variance = alpha/(beta*beta) = 1/1 = 1
 # This is a common choice when we have little prior knowledge
 
 alpha_prior = 1
@@ -55,7 +54,7 @@ print(f"Prior variance: {alpha_prior/beta_prior**2}\n")
 # a) Posterior Distribution (Conjugate Prior Property)
 # ============================================================================
 # For Poisson likelihood with Gamma prior, the posterior is also Gamma:
-# Posterior ~ Gamma(α_prior + total_calls, β_prior + total_hours)
+# Posterior ~ Gamma(alpha_prior + total_calls, beta_prior + total_hours)
 
 alpha_post = alpha_prior + total_calls
 beta_post = beta_prior + total_hours
@@ -88,7 +87,7 @@ print(f"                {hdi_94[0]:.4f} and {hdi_94[1]:.4f} calls/hour\n")
 # ============================================================================
 # c) Most Probable Value (Mode)
 # ============================================================================
-# Mode of Gamma(α, β) = (α - 1) / β for α ≥ 1
+# Mode of Gamma(alpha, beta) = (alpha - 1) / beta for alpha ≥ 1
 
 if alpha_post >= 1:
     mode = (alpha_post - 1) / beta_post
