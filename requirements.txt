@@ -2,6 +2,7 @@ pymc
 arviz
 matplotlib
 numpy
+scipy
 jupyter
 pgmpy
 hmmlearn
