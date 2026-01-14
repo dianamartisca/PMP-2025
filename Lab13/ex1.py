@@ -108,8 +108,16 @@ plt.figure(figsize=(10, 6))
 plt.scatter(x_1s[0], y_1s, alpha=0.5, label='Data', color='k')
 
 # Original (sd=10)
+'''The prior is moderately wide, allowing the coefficients to vary but not too much.
+The resulting curve fits the data well but avoids extreme oscillations.
+The credible interval is reasonable, reflecting moderate uncertainty.'''
 trace_10 = run_poly_model(10, 'beta sd=10', 'red')
 # sd=100
+'''
+The prior is extremely wide, allowing the coefficients to take very large values.
+The resulting curve can become much more flexible, possibly overfitting the data, especially at the edges.
+The credible interval is much wider, reflecting much greater uncertainty in the fit, especially where data is sparse.
+'''
 trace_100 = run_poly_model(100, 'beta sd=100', 'blue')
 # sd=[10,0.1,0.1,0.1,0.1]
 trace_vec = run_poly_model(np.array([10,0.1,0.1,0.1,0.1]), 'beta sd=[10,0.1,...]', 'green')
