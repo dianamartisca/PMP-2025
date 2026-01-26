@@ -1,6 +1,0 @@
-[global]
-device = cpu
-floatX = float64
-cxx = 
-optimizer = fast_run
-mode = FAST_RUN
